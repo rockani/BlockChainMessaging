@@ -6,18 +6,24 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Block {
+    public int difficulty;
     public long timestamp;
     public int index;
     String data,previousHash,Hash; int nonce;
 
-    public Block(int index,String previousHash,long timestamp,String data) {
+    public Block(int index,String previousHash,long timestamp,String data,int difficulty) {
         this.timestamp = timestamp;
         this.index = index;
         this.data = data;
         this.previousHash = previousHash;
         nonce=0;
+        this.difficulty =difficulty;
         this.Hash = Block.calculateHash_detail(this);
 
+    }
+
+    public int getDifficulty() {
+        return difficulty;
     }
 
     public long getTimestamp() {
@@ -63,16 +69,14 @@ public class Block {
 
 
     private  String calculateHash() {
-        return Encrypt.getSHA256(this.previousHash+this+this.timestamp+this.data+this.nonce).toString();
+        return Encrypt.getSHA256(this.previousHash+this+this.timestamp+this.data+this.nonce);
     }
 
     public String calculateHashForBlock(){
         return calculateHash();
     }
 
-    //    public String calculateHash(int nextIndex,String prevHash,long nextTimeStamp,String data,int nonce){
-//        return Encrypt.getSHA256(prevHash+nextIndex+nextTimeStamp+data+nonce).toString();
-//    }
+
     public String getHash() {
         return this.Hash;
     }

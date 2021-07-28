@@ -44,6 +44,7 @@ public class BlockChainAdapter extends RecyclerView.Adapter<BlockChainAdapter.Bl
         holder.txtTimestamp.setText(String.valueOf(new Date(blockChain.get(position).getTimestamp())));
         holder.txtData.setText(blockChain.get(position).getData());
         holder.txtHash.setText(blockChain.get(position).getHash());
+        holder.txtPow.setText(String.valueOf(blockChain.get(position).getDifficulty()));
 
         if(position%4==0){
             holder.parent.setBackgroundResource(R.drawable.bg2);
@@ -72,16 +73,8 @@ public class BlockChainAdapter extends RecyclerView.Adapter<BlockChainAdapter.Bl
         return blockChain.size();
     }
      class BlockViewHolder extends RecyclerView.ViewHolder{
-//        public TextView BlockItemView;
-//        final BlockChainAdapter mAdapter;
-//
-//        public BlockViewHolder(@NonNull View  blockItemView, BlockChainAdapter mAdapter) {
-//            super(blockItemView);
-//            this.BlockItemView = blockItemView.findViewById(R.id.block_item);
-//            this.mAdapter = mAdapter;
-////            ItemView.setOnClickListener(this::onClick);
-//        }
-         public TextView txtIndex,txtPreviousHash,txtTimestamp,txtData,txtHash;
+
+         public TextView txtIndex,txtPreviousHash,txtTimestamp,txtData,txtHash,txtPow;
          final BlockChainAdapter mAdapter;
          public LinearLayout parent;
 
@@ -92,66 +85,11 @@ public class BlockChainAdapter extends RecyclerView.Adapter<BlockChainAdapter.Bl
              txtTimestamp = itemView.findViewById(R.id.txt_timestamp);
              txtData = itemView.findViewById(R.id.txt_data);
              txtHash = itemView.findViewById(R.id.txt_hash);
-             this.mAdapter=Adapter;
+             mAdapter=Adapter;
+             txtPow = itemView.findViewById(R.id.txt_pow);
              parent = itemView.findViewById(R.id.card_sublayout);
          }
 
 
     }
 }
-/*public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder>{
-
-    private final LinkedList<String> mWordList;
-    private LayoutInflater mInflater;
-
-
-
-    class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final TextView wordItemView;
-        final WordListAdapter mAdapter;
-
-        public WordViewHolder(View ItemView, WordListAdapter adapter) {
-            super(ItemView);
-            this.wordItemView = ItemView.findViewById(R.id.word);
-            this.mAdapter = adapter;
-            ItemView.setOnClickListener(this::onClick);
-        }
-
-        @Override
-        public void onClick(View v) {
-            int position = getLayoutPosition();
-            String element = mWordList.get(position);
-            mWordList.set(position,element+" Clicked!");
-            mAdapter.notifyDataSetChanged();
-        }
-    }
-
-    public WordListAdapter(Context context,LinkedList<String> wordList){
-        mInflater = LayoutInflater.from(context);
-        this.mWordList=wordList;
-    }
-
-
-
-    @NonNull
-    @Override
-    public WordListAdapter.WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View mItemView = mInflater.inflate(R.layout.wordlist_item,parent,false);
-        return new WordViewHolder(mItemView,this);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull WordListAdapter.WordViewHolder holder, int position) {
-        String mCurrent = mWordList.get(position).toString();
-        holder.wordItemView.setText(mCurrent);
-    }
-
-    @Override
-    public int getItemCount() {
-        return mWordList.size();
-    }
-
-
-
-}
-*/

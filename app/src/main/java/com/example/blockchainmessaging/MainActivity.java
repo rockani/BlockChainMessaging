@@ -1,6 +1,5 @@
 package com.example.blockchainmessaging;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -63,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 if (!(Message.getText().toString().isEmpty())) {
                     Block newBlock = blockChainManager.generateNextBlock(Message.getText().toString());
                     blockChainManager.addBlock(newBlock);
-                    //displayMessage(newBlock);
+
                     Message.setText("");
-//                        scroll.scrollToDescendant(findViewById(R.id.messageView));
+
                     int size = blockChainManager.Blockchain.size();
                     blockChainManager.addBlock(newBlock);
-                    mRecyclerView.getAdapter().notifyItemInserted(size);//tify
+                    mRecyclerView.getAdapter().notifyItemInserted(size);
                     mRecyclerView.smoothScrollToPosition(size);
                     Log.d("CheckingIt",String.valueOf(blockChainManager.Blockchain.size()));
 

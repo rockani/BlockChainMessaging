@@ -12,7 +12,7 @@ public class BlockChainManager {
     public  static ArrayList<Block> Blockchain;
     public static int difficulty;
     public Block getGenesisBlock(){
-        return new Block(0, null, System.currentTimeMillis(), "my genesis block!!");
+        return new Block(0, null, System.currentTimeMillis(), "my genesis block!!",difficulty);
     }
 
     public BlockChainManager(int difficulty, @NonNull Context context) {
@@ -28,7 +28,7 @@ public class BlockChainManager {
         int nextIndex = previousBlock.index;
         long nextTimeStamp = new Date().getTime();// 1000;
         //String nextHash = calculateHash(nextIndex, previousBlock.Hash, nextTimeStamp, data);
-        return new Block(nextIndex+1,previousBlock.Hash,nextTimeStamp,data);
+        return new Block(nextIndex+1,previousBlock.Hash,nextTimeStamp,data,difficulty);
     }
 
     public Block getLatestBlock(){
@@ -76,24 +76,5 @@ public class BlockChainManager {
         return true;
     }
 
-
-
-
-
-
-//    var isValidNewBlock = (newBlock, previousBlock) => {
-//        if (previousBlock.index + 1 !== newBlock.index) {
-//            console.log('invalid index');
-//            return false;
-//        } else if (previousBlock.hash !== newBlock.previousHash) {
-//            console.log('invalid previoushash');
-//            return false;
-//        } else if (calculateHashForBlock(newBlock) !== newBlock.hash) {
-//            console.log(typeof (newBlock.hash) + ' ' + typeof calculateHashForBlock(newBlock));
-//            console.log('invalid hash: ' + calculateHashForBlock(newBlock) + ' ' + newBlock.hash);
-//            return false;
-//        }
-//        return true;
-//    };
 
 }
