@@ -22,5 +22,3 @@ You can run this Android app on Appetize.io here.
 [![bm10.jpg](https://i.postimg.cc/xjbgZrRG/bm10.jpg)](https://postimg.cc/G9dkB569)
 
   
-## Demo
-You can download the App from [here](3bw72gaw6ju7tf8f8901pr).
